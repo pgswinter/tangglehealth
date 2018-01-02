@@ -15,7 +15,7 @@ class BillContainer extends Component {
     this.state = {
       cost:'',
       description:'',
-      person:'',
+      quantityPerson:'',
       errors: {}
     };
 		this.onChange = this.onChange.bind(this);
@@ -88,9 +88,9 @@ class BillContainer extends Component {
   }
 
   onSubmit(values) {
-    // if(this.isValid()){
+    if(this.isValid()){
       this.props.savePost(values).then(this.props.dispatch(reset('NewPost')));  
-    // }
+    }
   }
 
   render() {
@@ -114,6 +114,7 @@ class BillContainer extends Component {
                       label="Cost"
                       class="footer-cost form-control"
                       value={this.state.cost}
+                      onChange={this.onChange}
                     />
                     {errors.cost && <p className="error">{errors.cost}</p>}
                   </div>
@@ -125,6 +126,7 @@ class BillContainer extends Component {
                       label="Description"
                       class="footer-description form-control"
                       value={this.state.description}
+                      onChange={this.onChange}
                     />
                     {errors.description && <p className="error">{errors.description}</p>}
                   </div>
@@ -136,6 +138,7 @@ class BillContainer extends Component {
                       label="Quantity Person"
                       class="footer-quantityPerson form-control"
                       value={this.state.quantityPerson}
+                      onChange={this.onChange}
                     />
                     {errors.quantityPerson && <p className="error">{errors.quantityPerson}</p>}
                   </div>
